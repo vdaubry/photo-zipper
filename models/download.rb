@@ -3,10 +3,9 @@ require "securerandom"
 require 'fileutils'
 
 class Download
-  attr_accessor :per, :tmpdir
+  attr_accessor :tmpdir
   
   def initialize
-    @per=50
     @tmpdir = "#{Dir.tmpdir}/#{SecureRandom.uuid}"
     FileUtils.mkdir @tmpdir
   end
