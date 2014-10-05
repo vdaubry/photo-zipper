@@ -5,9 +5,8 @@ module Facades
 
     attr_accessor :queue
 
-    def initialize
-      raise "Queue undefined" if ENV["QUEUE_NAME"].nil?
-
+    def initialize(queue)
+      return if ENV["TEST"]
       AWS.config({
       :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"],
@@ -17,15 +16,16 @@ module Facades
       sqs = AWS::SQS.new 
 
       @queue = begin
-                sqs.queues.named(ENV["QUEUE_NAME"])
+                sqs.queues.named(queue)
               rescue AWS::SQS::Errors::NonExistentQueue => e
-                sqs.queues.create(ENV["QUEUE_NAME"],
-                  :visibility_timeout => 90,
+                sqs.queues.create(queue,
+                  :visibility_timeout => 30*60,
                   :message_retention_period => 1209600)
               end
     end
 
     def send(message)
+      return if ENV["TEST"]
       @queue.send_message("#{message}") unless message.nil?
     end
 

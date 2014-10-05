@@ -1,8 +1,9 @@
 require 'dotenv'
 require 'raven'
 require_relative '../config/application'
-require_relative "../models/facades/sqs"
-require_relative "../models/message_reader"
+
+path = File.expand_path('../models', File.dirname(__FILE__))
+Dir[path+"/**/*.rb"].each {|file| require file}
 
 
 ###########################################################
@@ -28,7 +29,7 @@ end
 ###########################################################
 
 puts "Start polling messages from queue"
-Facades::SQS.new.poll do |msg|
+Facades::SQS.new(ENV["TO_ZIP_QUEUE_NAME"]).poll do |msg|
   Raven.capture do
     MessageReader.new(msg).read
   end

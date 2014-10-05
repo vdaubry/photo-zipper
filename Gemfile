@@ -5,6 +5,10 @@ gem 'activemodel',              '~> 4.1.6'
 gem 'activesupport',            '~> 4.1.6'
 gem 'sentry-raven',             '~> 0.10.1'
 gem 'aws-sdk',                  '~> 1.54.0'
+gem 'rubyzip',                  '~> 1.1.6'
+gem 'httparty',                 '~> 0.13.1'
+gem 'webmock',                  '~> 1.19.0'
+gem 'retriable',                '~> 1.4.1'
 
 group :test do
   gem 'coveralls',              '~> 0.7.1', require: false

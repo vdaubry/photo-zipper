@@ -1,5 +1,6 @@
 require 'irb'
 require 'dotenv'
+require 'json'
 
 path = File.expand_path('models', File.dirname(__FILE__))
 Dir[path+"/**/*.rb"].each {|file| require file}
