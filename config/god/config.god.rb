@@ -11,7 +11,7 @@ num_workers.times do |num|
     w.interval      = 30.seconds
     w.env           = {}
     w.dir           = app_path
-    w.start         = "bundle exec ruby #{app_path}/scripts/start_download.rb"
+    w.start         = "bundle exec ruby #{app_path}/scripts/main_script.rb"
     w.start_grace   = 10.seconds
     w.log           = File.join(app_path, 'log', "#{process_name}.log")
  
