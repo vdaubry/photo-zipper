@@ -6,7 +6,7 @@ describe Zipper do
     before(:each) do
       @test_dir = "tmp/test"
       FileUtils.rm_rf @test_dir
-      Dir.mkdir @test_dir
+      FileUtils.mkdir_p @test_dir
       2.times do |i|
         File.new("#{@test_dir}/foobar#{i}.jpg", "w+")
       end
