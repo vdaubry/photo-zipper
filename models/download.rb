@@ -18,6 +18,7 @@ class Download
     puts "downloading #{keys.count} images in #{@tmpdir}"
     keys.each do |key|
       filename = key.split('/').last
+      puts "download #{key} into #{@tmpdir}/#{filename}"
       Facades::S3.new(ENV['SOURCE_S3_BUCKET']).get(key, "#{@tmpdir}/#{filename}")
     end
   end

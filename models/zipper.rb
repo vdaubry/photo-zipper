@@ -11,8 +11,10 @@ class Zipper
   def upload_zip
     @zipname = "#{SecureRandom.uuid}.zip"
     files_to_zip = Dir.glob("#{@dir}/*").reject {|f| File.extname(f).include?(".zip")}
+    puts "Zipping #{files_to_zi.count} images to #{@dir}/#{@zipname}"
     zip("#{@dir}/#{@zipname}", files_to_zip.join(" "))
 
+    puts "Upload zip to S3"
     Facades::S3.new(ENV["DESTINATION_S3_BUCKET"]).put(@zipname, "#{@dir}/#{@zipname}")
   end
 

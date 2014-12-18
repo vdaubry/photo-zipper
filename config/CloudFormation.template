@@ -115,7 +115,7 @@
             },
             "files" : {
               "/srv/www/photo-zipper/current/private-conf/.env" : {
-                "source":"https://s3-eu-west-1.amazonaws.com/privateconf/downloaderconf/.env",
+                "source":"https://s3-eu-west-1.amazonaws.com/privateconf/zipperconf/.env",
                 "authentication":"S3AccessCreds"
               }
             }
