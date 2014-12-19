@@ -30,8 +30,7 @@ module Facades
     def put(key, path_to_file)
       unless ENV['TEST']
         obj = @bucket.objects[key]
-        #obj.reduced_redundancy = true
-        obj.write(Pathname.new(path_to_file))
+        obj.write(Pathname.new(path_to_file), {:reduced_redundancy => true})
       end
     end
   end
