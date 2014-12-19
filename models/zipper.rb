@@ -11,7 +11,7 @@ class Zipper
   def upload_zip
     @zipname = "#{SecureRandom.uuid}.zip"
     files_to_zip = Dir.glob("#{@dir}/*").reject {|f| File.extname(f).include?(".zip")}
-    puts "Zipping #{files_to_zi.count} images to #{@dir}/#{@zipname}"
+    puts "Zipping #{files_to_zip.count} images to #{@dir}/#{@zipname}"
     zip("#{@dir}/#{@zipname}", files_to_zip.join(" "))
 
     puts "Upload zip to S3"
