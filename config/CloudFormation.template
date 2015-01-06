@@ -167,7 +167,7 @@
         "Type":"AWS::CloudWatch::Alarm",
         "Properties": {
             "AlarmDescription": "ScaleDownIfMessageBelowTreshold",
-            "MetricName": "ApproximateNumberOfMessagesVisible",
+            "MetricName": "ApproximateNumberOfMessagesNotVisible",
             "Namespace": "AWS/SQS",
             "Statistic": "Maximum",
             "Period": "60",
